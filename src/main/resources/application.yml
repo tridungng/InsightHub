@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: InsightHub
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/catalogdb
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: localhost:9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
