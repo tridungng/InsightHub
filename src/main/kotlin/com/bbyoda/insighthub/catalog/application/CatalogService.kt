@@ -1,6 +1,5 @@
 package com.bbyoda.insighthub.catalog.application
 
-import com.bbyoda.insighthub.catalog.domain.Category
 import com.bbyoda.insighthub.catalog.domain.Product
 import com.bbyoda.insighthub.catalog.domain.ProductRepository
 import com.bbyoda.insighthub.catalog.domain.events.ProductCreatedEvent

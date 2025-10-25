@@ -17,4 +17,8 @@ class Product(
     var price: BigDecimal,
     var stock: Int,
     @ManyToOne(fetch = FetchType.LAZY) var category: Category?
-)
+) {
+    constructor() : this(UUID.randomUUID(), "", "", BigDecimal.ZERO, 0, null)
+
+    val inStock: Boolean get() = stock > 0
+}

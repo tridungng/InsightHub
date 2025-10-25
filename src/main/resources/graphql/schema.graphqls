@@ -1,0 +1,33 @@
+scalar BigDecimal
+
+input CreateProductInput {
+    name: String!
+    description: String!
+    price: BigDecimal!
+    stock: Int!
+}
+
+type Product {
+    id: ID!
+    name: String!
+    description: String!
+    price: BigDecimal!
+    stock: Int!
+    inStock: Boolean!
+}
+
+type Query {
+    products(offset: Int = 0, limit: Int = 20, inStock: Boolean): [Product!]!
+    product(id: ID!): Product
+}
+
+type UpdateStockPayload {
+    success: Boolean!,
+    product: Product,
+    message: String,
+}
+
+type Mutation {
+    createProduct(input: CreateProductInput!): Product!
+    updateStock(id: ID!, newStock: Int!): UpdateStockPayload!
+}
