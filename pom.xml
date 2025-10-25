@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>25</java.version>
+        <kotlin.jvm.target>24</kotlin.jvm.target>
         <kotlin.version>2.2.0</kotlin.version>
     </properties>
 
@@ -26,10 +27,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-graphql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>21.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -106,7 +115,7 @@
                     <compilerPlugins>
                         <plugin>spring</plugin>
                     </compilerPlugins>
-                    <jvmTarget>${java.version}</jvmTarget>
+                    <jvmTarget>${kotlin.jvm.target}</jvmTarget>
                 </configuration>
                 <dependencies>
                     <dependency>
