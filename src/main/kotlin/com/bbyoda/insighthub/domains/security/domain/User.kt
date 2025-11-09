@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub.security.domain
+package com.bbyoda.insighthub.domains.security.domain
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

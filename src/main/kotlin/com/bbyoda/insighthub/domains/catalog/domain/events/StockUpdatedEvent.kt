@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub.catalog.domain.events
+package com.bbyoda.insighthub.domains.catalog.domain.events
 
 import java.util.UUID
 

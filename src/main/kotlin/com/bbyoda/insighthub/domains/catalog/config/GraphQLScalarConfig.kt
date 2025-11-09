@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub.catalog.config
+package com.bbyoda.insighthub.domains.catalog.config
 
 import graphql.scalars.ExtendedScalars
 import org.springframework.context.annotation.Bean

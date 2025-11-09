@@ -1,6 +1,6 @@
-package com.bbyoda.insighthub.security.application
+package com.bbyoda.insighthub.domains.security.application
 
-import com.bbyoda.insighthub.security.domain.User
+import com.bbyoda.insighthub.domains.security.domain.User
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -22,7 +22,7 @@ class JwtService {
         } catch (e: Exception) {
             false
         }
-    
+
     fun extractClaims(token: String): Claims =
         Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).body
 

@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub.catalog.infrastructure
+package com.bbyoda.insighthub.domains.catalog.infrastructure
 
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.springframework.context.annotation.Configuration

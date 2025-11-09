@@ -1,7 +1,7 @@
-package com.bbyoda.insighthub.catalog.infrastructure
+package com.bbyoda.insighthub.domains.catalog.infrastructure
 
-import com.bbyoda.insighthub.catalog.domain.Product
-import com.bbyoda.insighthub.catalog.domain.ProductRepository
+import com.bbyoda.insighthub.domains.catalog.domain.Product
+import com.bbyoda.insighthub.domains.catalog.domain.ProductRepository
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository

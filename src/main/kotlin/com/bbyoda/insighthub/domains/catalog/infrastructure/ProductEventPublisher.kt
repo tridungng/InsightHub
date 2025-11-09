@@ -1,7 +1,7 @@
-package com.bbyoda.insighthub.catalog.infrastructure
+package com.bbyoda.insighthub.domains.catalog.infrastructure
 
-import com.bbyoda.insighthub.catalog.domain.events.ProductCreatedEvent
-import com.bbyoda.insighthub.catalog.domain.events.StockUpdatedEvent
+import com.bbyoda.insighthub.domains.catalog.domain.events.ProductCreatedEvent
+import com.bbyoda.insighthub.domains.catalog.domain.events.StockUpdatedEvent
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
 

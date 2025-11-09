@@ -1,9 +1,9 @@
-package com.bbyoda.insighthub.catalog.application
+package com.bbyoda.insighthub.domains.catalog.application
 
-import com.bbyoda.insighthub.catalog.domain.Product
-import com.bbyoda.insighthub.catalog.domain.ProductRepository
-import com.bbyoda.insighthub.catalog.domain.events.ProductCreatedEvent
-import com.bbyoda.insighthub.catalog.infrastructure.ProductEventPublisher
+import com.bbyoda.insighthub.domains.catalog.domain.Product
+import com.bbyoda.insighthub.domains.catalog.domain.ProductRepository
+import com.bbyoda.insighthub.domains.catalog.domain.events.ProductCreatedEvent
+import com.bbyoda.insighthub.domains.catalog.infrastructure.ProductEventPublisher
 import jakarta.transaction.Transactional
 
 import org.springframework.stereotype.Service

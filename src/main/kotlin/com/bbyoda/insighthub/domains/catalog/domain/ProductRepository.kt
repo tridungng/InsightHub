@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub.catalog.domain
+package com.bbyoda.insighthub.domains.catalog.domain
 
 import java.util.UUID
 
