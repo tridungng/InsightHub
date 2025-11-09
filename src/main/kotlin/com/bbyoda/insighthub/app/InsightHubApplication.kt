@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub
+package com.bbyoda.insighthub.app
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class InsightHubApplication
 
 fun main(args: Array<String>) {
-	runApplication<InsightHubApplication>(*args)
+    runApplication<InsightHubApplication>(*args)
 }
