@@ -1,5 +1,8 @@
 package com.bbyoda.insighthub.domains.security.domain
 
-enum class Role {
-    USER, ADMIN
-}
+import com.bbyoda.insighthub.domains.security.domain.model.Permission
+
+data class Role(
+    val name: String,
+    val permissions: Set<Permission> = emptySet()
+)
