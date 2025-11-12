@@ -1,5 +1,8 @@
 package com.bbyoda.insighthub.domains.security.domain.model
 
+import java.time.Instant
+import org.springframework.security.crypto.password.PasswordEncoder
+
 import com.bbyoda.insighthub.domains.security.domain.Role
 import com.bbyoda.insighthub.domains.security.domain.event.PasswordChanged
 import com.bbyoda.insighthub.domains.security.domain.event.RoleAssigned
@@ -7,8 +10,6 @@ import com.bbyoda.insighthub.domains.security.domain.event.UserCreated
 import com.bbyoda.insighthub.shared.kernel.AggregateRoot
 import com.bbyoda.insighthub.shared.types.Email
 import com.bbyoda.insighthub.shared.types.UserId
-import org.springframework.security.crypto.password.PasswordEncoder
-import java.time.Instant
 
 class User(
     override val id: UserId,
@@ -20,6 +21,10 @@ class User(
     var status: UserStatus = UserStatus.ACTIVE,
     val createdAt: Instant = Instant.now()
 ) : AggregateRoot<UserId>() {
+
+    init {
+        addDomainEvent(UserCreated(id, email.value, firstName, lastName))
+    }
 
     fun assignRole(role: Role) {
         roles.add(role)
