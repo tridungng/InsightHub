@@ -1,18 +1,18 @@
 package com.bbyoda.insighthub.shared.types
 
+import java.util.regex.Pattern
+
 @JvmInline
 value class Email(val value: String) {
     init {
-        require(isValid(value)) { "Invalid email format: $value" }
-    }
-
-    companion object {
-        private val EMAIL_REGEX = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
-
-        fun isValid(email: String): Boolean = email.matches(EMAIL_REGEX)
-
-        fun orNull(email: String): Email? = if (isValid(email)) Email(email) else null
+        require(EMAIL_REGEX.matcher(value).matches()) { "Invalid email format: $value" }
     }
 
     override fun toString(): String = value
+
+    companion object {
+        private val EMAIL_REGEX: Pattern = Pattern.compile(
+            "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
+        )
+    }
 }
