@@ -31,6 +31,11 @@ class User(
         addDomainEvent(RoleAssigned(id, role.name))
     }
 
+    fun hasRole(roleName: String) = roles.any { it.name.equals(roleName, ignoreCase = true) }
+
+    fun permissions(): Set<Permission> =
+        roles.flatMap { it.permissions }.toSet()
+
     fun verifyPassword(encodedPassword: String, encoder: PasswordEncoder): Boolean {
         return encoder.matches(encodedPassword, passwordHash)
     }
@@ -41,6 +46,6 @@ class User(
         addDomainEvent(PasswordChanged(id))
     }
 
-    fun permissions(): Set<Permission> =
-        roles.flatMap { it.permissions }.toSet()
+    fun passwordHash(): String = passwordHash
+
 }
