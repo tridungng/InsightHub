@@ -1,6 +1,6 @@
 package com.bbyoda.insighthub.domains.security.infrastructure.persistence
 
-import com.bbyoda.insighthub.domains.security.domain.Role
+import com.bbyoda.insighthub.domains.security.domain.model.Role
 import com.bbyoda.insighthub.domains.security.domain.model.Permission
 import com.bbyoda.insighthub.domains.security.domain.model.User
 import com.bbyoda.insighthub.domains.security.domain.model.UserStatus

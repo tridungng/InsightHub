@@ -2,11 +2,8 @@ package com.bbyoda.insighthub.domains.security.domain.model
 
 import java.time.Instant
 
-import com.bbyoda.insighthub.domains.security.domain.Role
-import com.bbyoda.insighthub.domains.security.domain.event.PasswordChanged
 import com.bbyoda.insighthub.domains.security.domain.event.RoleAssigned
 import com.bbyoda.insighthub.domains.security.domain.event.UserCreated
-import com.bbyoda.insighthub.domains.security.domain.event.UserLoggedIn
 import com.bbyoda.insighthub.domains.security.domain.service.PasswordPolicy
 import com.bbyoda.insighthub.shared.kernel.AggregateRoot
 import com.bbyoda.insighthub.shared.types.Email
@@ -44,6 +41,5 @@ class User(
     }
 
     fun passwordHash(): String = passwordHash
-    
 
 }
