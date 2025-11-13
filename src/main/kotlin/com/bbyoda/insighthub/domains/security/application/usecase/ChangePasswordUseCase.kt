@@ -5,7 +5,9 @@ import com.bbyoda.insighthub.domains.security.domain.repository.UserRepository
 import com.bbyoda.insighthub.domains.security.domain.service.PasswordPolicy
 import com.bbyoda.insighthub.shared.kernel.Result
 import com.bbyoda.insighthub.shared.types.UserId
+import org.springframework.stereotype.Service
 
+@Service
 class ChangePasswordUseCase(
     private val users: UserRepository,
     private val passwordPolicy: PasswordPolicy
