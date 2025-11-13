@@ -10,5 +10,9 @@ interface JwtService {
     )
 
     fun issue(spec: TokenSpec): String
+    fun validate(token: String): Boolean
+    fun extractUserId(token: String): String?
+    fun extractEmail(token: String): String?
+    fun extractPermissions(token: String): Set<String>
     fun defaultTtlSeconds(): Long
 }

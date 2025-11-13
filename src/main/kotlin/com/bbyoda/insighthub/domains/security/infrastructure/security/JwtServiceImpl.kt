@@ -35,7 +35,7 @@ class JwtServiceImpl(
             .compact()
     }
 
-    fun validate(token: String): Boolean = try {
+    override fun validate(token: String): Boolean = try {
         val claims = parseClaims(token)
         val exp = claims.expiration.toInstant()
         Instant.now().isBefore(exp)
@@ -43,13 +43,13 @@ class JwtServiceImpl(
         false
     }
 
-    fun extractUserId(token: String): String? =
+    override fun extractUserId(token: String): String? =
         runCatching { parseClaims(token).subject }.getOrNull()
 
-    fun extractEmail(token: String): String? =
+    override fun extractEmail(token: String): String? =
         runCatching { parseClaims(token)["email"] as? String }.getOrNull()
 
-    fun extractPermissions(token: String): Set<String> =
+    override fun extractPermissions(token: String): Set<String> =
         runCatching {
             val list = parseClaims(token)["permissions"] as? Collection<*>
             list?.mapNotNull { it?.toString() }?.toSet() ?: emptySet()
