@@ -1,15 +1,17 @@
 package com.bbyoda.insighthub.domains.security.infrastructure.security
 
-import com.bbyoda.insighthub.domains.security.application.port.JwtService
-import org.springframework.beans.factory.annotation.Value
+import java.time.Instant
+import java.util.Date
+import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
 import org.springframework.stereotype.Service
-import java.time.Instant
-import java.util.Date
+import org.springframework.beans.factory.annotation.Value
 
-@Service("jwtService")
+import com.bbyoda.insighthub.domains.security.application.port.JwtService
+
+@Service
 class JwtServiceImpl(
     @Value("\${security.jwt.secret}") private val secretBase64: String,
     @Value("\${security.jwt.ttl-seconds:3600}") private val ttlSeconds: Long,
@@ -32,6 +34,33 @@ class JwtServiceImpl(
             .signWith(key)
             .compact()
     }
+
+    fun validate(token: String): Boolean = try {
+        val claims = parseClaims(token)
+        val exp = claims.expiration.toInstant()
+        Instant.now().isBefore(exp)
+    } catch (e: Exception) {
+        false
+    }
+
+    fun extractUserId(token: String): String? =
+        runCatching { parseClaims(token).subject }.getOrNull()
+
+    fun extractEmail(token: String): String? =
+        runCatching { parseClaims(token)["email"] as? String }.getOrNull()
+
+    fun extractPermissions(token: String): Set<String> =
+        runCatching {
+            val list = parseClaims(token)["permissions"] as? Collection<*>
+            list?.mapNotNull { it?.toString() }?.toSet() ?: emptySet()
+        }.getOrDefault(emptySet())
+
+    private fun parseClaims(token: String): Claims =
+        Jwts.parserBuilder()
+            .setSigningKey(key)
+            .build()
+            .parseClaimsJws(token)
+            .body
 
     override fun defaultTtlSeconds(): Long = ttlSeconds
 
