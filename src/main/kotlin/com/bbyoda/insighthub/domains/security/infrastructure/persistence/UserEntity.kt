@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub.domains.security.infrastructure
+package com.bbyoda.insighthub.domains.security.infrastructure.persistence
 
 import jakarta.persistence.CollectionTable
 import jakarta.persistence.Column

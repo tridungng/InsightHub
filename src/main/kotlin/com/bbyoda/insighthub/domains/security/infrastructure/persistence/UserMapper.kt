@@ -4,7 +4,6 @@ import com.bbyoda.insighthub.domains.security.domain.Role
 import com.bbyoda.insighthub.domains.security.domain.model.Permission
 import com.bbyoda.insighthub.domains.security.domain.model.User
 import com.bbyoda.insighthub.domains.security.domain.model.UserStatus
-import com.bbyoda.insighthub.domains.security.infrastructure.UserEntity
 import com.bbyoda.insighthub.shared.types.Email
 import com.bbyoda.insighthub.shared.types.UserId
 import org.springframework.stereotype.Component
@@ -45,7 +44,7 @@ class UserMapper {
 
     private fun domainPermissionsByRole(domain: User): Map<String, Set<Permission>> =
         domainPermissions(domain)
-    
+
     private fun domainPermissions(domain: User): Map<String, Set<Permission>> =
         domain.permissions().groupBy { "AGGREGATED" }.mapValues { it.value.toSet() }
 }
