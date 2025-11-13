@@ -30,7 +30,7 @@ class RegisterUserUseCase(
         )
 
         val saved = userRepository.save(user)
-        eventPublisher.publish(saved.getDomainEvents())
+        eventPublisher.publish(saved.domainEvents)
         saved.clearDomainEvents()
 
         return Result.success(UserDto.fromDomain(saved))
