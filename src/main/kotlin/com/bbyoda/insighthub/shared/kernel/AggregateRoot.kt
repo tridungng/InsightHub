@@ -1,15 +1,15 @@
 package com.bbyoda.insighthub.shared.kernel
 
 abstract class AggregateRoot<ID> {
-    abstract val id: ID
 
-    private val domainEvents: MutableList<DomainEvent> = mutableListOf()
+    private val _domainEvents = mutableListOf<DomainEvent>()
+
+    val domainEvents: List<DomainEvent>
+        get() = _domainEvents.toList()
 
     protected fun addDomainEvent(event: DomainEvent) {
-        domainEvents.add(event)
+        _domainEvents.add(event)
     }
 
-    fun getDomainEvents(): List<DomainEvent> = domainEvents.toList()
-
-    fun clearDomainEvents() = domainEvents.clear()
+    fun clearDomainEvents() = _domainEvents.clear()
 }
