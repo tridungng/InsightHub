@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Value
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
+import org.springframework.stereotype.Service
 import java.time.Instant
 import java.util.Date
 
+@Service("jwtService")
 class JwtServiceImpl(
     @Value("\${security.jwt.secret}") private val secretBase64: String,
     @Value("\${security.jwt.ttl-seconds:3600}") private val ttlSeconds: Long,

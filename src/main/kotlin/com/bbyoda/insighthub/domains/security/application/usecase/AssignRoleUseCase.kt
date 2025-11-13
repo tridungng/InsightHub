@@ -5,7 +5,9 @@ import com.bbyoda.insighthub.domains.security.domain.model.Role
 import com.bbyoda.insighthub.domains.security.domain.repository.UserRepository
 import com.bbyoda.insighthub.shared.types.UserId
 import com.bbyoda.insighthub.shared.kernel.Result
+import org.springframework.stereotype.Service
 
+@Service
 class AssignRoleUseCase(private val users: UserRepository) {
     data class Cmd(val userId: String, val roleName: String, val permissions: Set<String> = emptySet())
 

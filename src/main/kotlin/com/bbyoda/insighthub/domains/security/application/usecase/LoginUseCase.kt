@@ -9,14 +9,16 @@ import com.bbyoda.insighthub.domains.security.domain.repository.UserRepository
 import com.bbyoda.insighthub.domains.security.domain.service.PasswordPolicy
 import com.bbyoda.insighthub.shared.kernel.Result
 import com.bbyoda.insighthub.shared.types.Email
+import org.springframework.stereotype.Service
 
+@Service
 class LoginUseCase(
     private val users: UserRepository,
     private val jwt: JwtService,
     private val passwordPolicy: PasswordPolicy,
     private val eventPublisher: EventPublisher
 ) {
-    
+
     fun execute(email: String, password: String): Result<AuthenticationResult, IdentityError> {
         val user = users.findByEmail(Email(email)) ?: return Result.failure(IdentityError.InvalidCredentials)
         if (!user.verifyPassword(password, passwordPolicy)) return Result.failure(IdentityError.InvalidCredentials)

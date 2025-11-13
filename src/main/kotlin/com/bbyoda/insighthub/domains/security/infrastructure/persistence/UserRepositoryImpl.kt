@@ -4,7 +4,9 @@ import com.bbyoda.insighthub.domains.security.domain.model.User
 import com.bbyoda.insighthub.domains.security.domain.repository.UserRepository
 import com.bbyoda.insighthub.shared.types.Email
 import com.bbyoda.insighthub.shared.types.UserId
+import org.springframework.stereotype.Repository
 
+@Repository
 class UserRepositoryImpl(private val jpa: UserJpaRepository, private val mapper: UserMapper) : UserRepository {
 
     override fun save(user: User): User = mapper.toDomain(jpa.save(mapper.toEntity(user)))

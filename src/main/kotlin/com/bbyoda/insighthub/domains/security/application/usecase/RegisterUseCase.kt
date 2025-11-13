@@ -10,7 +10,9 @@ import com.bbyoda.insighthub.domains.security.domain.service.PasswordPolicy
 import com.bbyoda.insighthub.shared.types.Email
 import com.bbyoda.insighthub.shared.types.UserId
 import com.bbyoda.insighthub.shared.kernel.Result
+import org.springframework.stereotype.Service
 
+@Service
 class RegisterUserUseCase(
     private val userRepository: UserRepository,
     private val passwordPolicy: PasswordPolicy,
