@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:prod-db}:5432/insighthub
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS}
+    listener:
+      concurrency: 3
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: WARN
+    com.bbyoda.insighthub: INFO
+
+security:
+  jwt:
+    secret: ${JWT_SECRET_BASE64}
+    ttl-seconds: 1800
+    issuer: insighthub-prod

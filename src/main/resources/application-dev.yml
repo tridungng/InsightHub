@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/catalogdb
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    listener:
+      missing-topics-fatal: false
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG
+    com.bbyoda.insighthub: DEBUG
+
+security:
+  jwt:
+    secret: dev-secret-key-should-be-long-base64==
+    ttl-seconds: 7200
