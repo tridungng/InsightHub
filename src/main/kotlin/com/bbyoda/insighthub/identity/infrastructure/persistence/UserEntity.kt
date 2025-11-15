@@ -34,6 +34,16 @@ class UserEntity(
     @Column(nullable = false, name = "created_at")
     val createdAt: Instant = Instant.now()
 ) {
+    constructor() : this(
+        id = "",
+        email = "",
+        passwordHash = "",
+        firstName = "",
+        lastName = "",
+        status = "",
+        createdAt = Instant.now()
+    )
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")])
     @Column(name = "role_name")
