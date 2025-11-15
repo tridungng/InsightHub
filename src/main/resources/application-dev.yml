@@ -22,8 +22,12 @@ spring:
 logging:
   level:
     root: INFO
+    org.springframework: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
     org.hibernate.SQL: DEBUG
     com.bbyoda.insighthub: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
 
 security:
   jwt:
