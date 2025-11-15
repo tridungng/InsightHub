@@ -27,5 +27,5 @@ logging:
 
 security:
   jwt:
-    secret: dev-secret-key-should-be-long-base64==
+    secret: oZoXJfH+FkEVxzjmxFpUr17Mra2b0K1qsCoAjnU93a0=
     ttl-seconds: 7200
