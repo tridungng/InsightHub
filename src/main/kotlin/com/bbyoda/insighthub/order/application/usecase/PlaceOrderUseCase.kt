@@ -1,4 +1,4 @@
-package com.bbyoda.insighthub.order.application
+package com.bbyoda.insighthub.order.application.usecase
 
 import com.bbyoda.insighthub.order.application.dto.OrderDto
 import com.bbyoda.insighthub.order.application.dto.OrderError
@@ -30,7 +30,7 @@ class PlaceOrderUseCase(
     }
 
     fun execute(cmd: Cmd): Result<OrderDto, OrderError> {
-        if (cmd.items.isEmpty()) return Result.failure(OrderError.EmptyOrder)
+        if (cmd.items.isEmpty()) return Result.Companion.failure(OrderError.EmptyOrder)
 
 
         val order = Order(userId = UserId(cmd.userId))
@@ -39,7 +39,7 @@ class PlaceOrderUseCase(
                 OrderItem(
                     item.productId,
                     item.name,
-                    Money.of(item.priceAmount, item.currency),
+                    Money.Companion.of(item.priceAmount, item.currency),
                     item.quantity
                 )
             )
@@ -57,6 +57,6 @@ class PlaceOrderUseCase(
         events.publish(saved.domainEvents)
         saved.clearDomainEvents()
 
-        return Result.success(OrderDto.fromDomain(saved))
+        return Result.Companion.success(OrderDto.Companion.fromDomain(saved))
     }
 }
