@@ -5,7 +5,7 @@ import com.bbyoda.insighthub.shared.kernel.DomainEvent
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
 
-@Component
+@Component("identityPublisher")
 class KafkaEventPublisher(
     private val kafkaTemplate: KafkaTemplate<String, Any>
 ) : EventPublisher {
