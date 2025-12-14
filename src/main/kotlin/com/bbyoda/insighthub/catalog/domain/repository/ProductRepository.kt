@@ -1,6 +1,6 @@
 package com.bbyoda.insighthub.catalog.domain.repository
 
-import com.bbyoda.insighthub.catalog.domain.Product
+import com.bbyoda.insighthub.catalog.domain.model.Product
 
 interface ProductRepository {
     fun save(product: Product): Product
