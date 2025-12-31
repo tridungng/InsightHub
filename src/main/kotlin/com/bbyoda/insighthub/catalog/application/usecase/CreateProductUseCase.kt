@@ -1,5 +1,8 @@
 package com.bbyoda.insighthub.catalog.application.usecase
 
+import java.math.BigDecimal
+import org.springframework.stereotype.Service
+
 import com.bbyoda.insighthub.catalog.application.dto.CatalogError
 import com.bbyoda.insighthub.catalog.application.dto.ProductDto
 import com.bbyoda.insighthub.catalog.application.port.CatalogSearchPort
@@ -10,8 +13,8 @@ import com.bbyoda.insighthub.catalog.domain.repository.CategoryRepository
 import com.bbyoda.insighthub.catalog.domain.repository.ProductRepository
 import com.bbyoda.insighthub.shared.kernel.Result
 import com.bbyoda.insighthub.shared.types.Money
-import java.math.BigDecimal
 
+@Service
 class CreateProductUseCase(
     private val products: ProductRepository,
     private val categories: CategoryRepository,
@@ -28,7 +31,7 @@ class CreateProductUseCase(
 
     fun execute(cmd: Cmd): Result<ProductDto, CatalogError> {
         if (cmd.priceAmount < 0) return Result.failure(CatalogError.InvalidPrice)
-        
+
         cmd.categoryIds.forEach { id ->
             if (categories.findById(id) == null) {
                 return Result.failure(CatalogError.CategoryNotFound)
