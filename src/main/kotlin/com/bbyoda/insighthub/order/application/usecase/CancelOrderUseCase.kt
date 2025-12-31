@@ -1,5 +1,7 @@
 package com.bbyoda.insighthub.order.application.usecase
 
+import org.springframework.stereotype.Service
+
 import com.bbyoda.insighthub.order.application.dto.OrderDto
 import com.bbyoda.insighthub.order.application.dto.OrderError
 import com.bbyoda.insighthub.order.application.port.EventPublisher
@@ -7,6 +9,7 @@ import com.bbyoda.insighthub.order.application.port.InventoryPort
 import com.bbyoda.insighthub.order.domain.repository.OrderRepository
 import com.bbyoda.insighthub.shared.kernel.Result
 
+@Service
 class CancelOrderUseCase(
     private val orders: OrderRepository,
     private val inventory: InventoryPort,

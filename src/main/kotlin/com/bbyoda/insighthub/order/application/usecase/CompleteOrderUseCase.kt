@@ -5,7 +5,9 @@ import com.bbyoda.insighthub.order.application.dto.OrderError
 import com.bbyoda.insighthub.order.application.port.EventPublisher
 import com.bbyoda.insighthub.order.domain.repository.OrderRepository
 import com.bbyoda.insighthub.shared.kernel.Result
+import org.springframework.stereotype.Service
 
+@Service
 class CompleteOrderUseCase(
     private val orders: OrderRepository,
     private val events: EventPublisher
