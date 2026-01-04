@@ -4,8 +4,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties("notification.email")
 data class SmtpEmailConfigurationProperties(
+    val enabled: Boolean = true,
     var from: String = "no-reply@localhost",
     var defaultSubject: String = "(no subject)",
     var maxRetries: Int = 3,
-    var timeoutMs: Long = 10000
+    var timeoutMs: Long = 10_000
 )
