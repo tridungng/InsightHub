@@ -13,9 +13,9 @@ import com.bbyoda.insighthub.identity.application.port.JwtService
 
 @Service
 class JwtServiceImpl(
-    @Value("\${security.jwt.secret}") private val secretBase64: String,
-    @Value("\${security.jwt.ttl-seconds:3600}") private val ttlSeconds: Long,
-    @Value("\${security.jwt.issuer:insighthub}") private val issuer: String
+    @param:Value($$"${security.jwt.secret}") private val secretBase64: String,
+    @param:Value("\${security.jwt.ttl-seconds:3600}") private val ttlSeconds: Long,
+    @param:Value("\${security.jwt.issuer:insighthub}") private val issuer: String
 ) : JwtService {
 
     private val key by lazy { Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretBase64)) }
