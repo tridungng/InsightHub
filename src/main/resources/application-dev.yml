@@ -39,7 +39,7 @@ spring:
 
 notification:
   email:
-    provider: smtp
+    enabled: true
     from: ${NOTIFICATION_EMAIL_FROM}
 
 logging:
