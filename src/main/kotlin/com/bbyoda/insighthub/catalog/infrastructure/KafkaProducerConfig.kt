@@ -15,7 +15,7 @@ class KafkaProducerConfig {
     fun producerFactory(): ProducerFactory<String, Any> =
         DefaultKafkaProducerFactory(
             mapOf(
-                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to "127.0.0.1:9092",
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to "127.0.0.1:29092",
                 ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to JsonSerializer::class.java
             )

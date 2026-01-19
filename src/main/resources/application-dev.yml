@@ -19,7 +19,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:29092
     listener:
       missing-topics-fatal: false
 
@@ -51,6 +51,8 @@ logging:
     org.hibernate.SQL: DEBUG
     com.bbyoda.insighthub: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
+    org.springframework.kafka.listener: INFO
+    level.org.apache.kafka.clients.consumer: INFO
 
 security:
   jwt:
